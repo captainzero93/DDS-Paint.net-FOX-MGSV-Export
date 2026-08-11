@@ -1,0 +1,3 @@
+@echo off
+echo Redirecting to the Visual Studio 2026 build/install helper...
+call "%~dp0BUILD_AND_INSTALL_MGSV_VS2026.bat"

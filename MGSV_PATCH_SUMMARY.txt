@@ -1,0 +1,22 @@
+Patched: DdsFileType.cs, DdsWriter.cs, AssemblyInfo.cs, DdsFileTypePlus.csproj
+Added: BUILD_MGSV_RELEASE.bat, MGSV_PATCH_README.md
+
+VS2026 update:
+- DdsFileTypePlusIO retargeted v143 -> v145
+- DirectXTex solution project retargeted v143 -> v145
+- Added BUILD_AND_INSTALL_MGSV_VS2026.bat
+- Old BUILD_MGSV_RELEASE.bat forwards to the new helper
+
+v0.2:
+- Match loaded DDS enabled by default
+- remembers source format/header/mip count/cubemap
+- exact reference mip count overrides normal/FOX auto count
+- explicit DX10-header preservation option added
+- More Info links removed from save dialog
+- FOX Engine / Choom Raider credit label added
+- plugin version 1.12.14.200
+
+v0.2.1:
+- fixed CS0177 in DdsReferenceStore.TryGet
+- build helper now uses /t:Restore instead of /restore
+- plugin version 1.12.14.201
