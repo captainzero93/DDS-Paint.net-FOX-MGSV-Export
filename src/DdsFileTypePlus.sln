@@ -1,92 +1,74 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DdsFileTypePlus", "DdsFileTypePlus.csproj", "{EC549B85-B295-4639-8610-24B7A8F6BDB0}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DdsFileTypePlusIO", "DdsFileTypePlusIO\DdsFileTypePlusIO.vcxproj", "{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77} = {371B9FA9-4C90-4AC6-A123-ACED756D6C77}
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{745DC9A9-B4D1-4EBF-AD99-7D6904772539}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectXTex", "..\3rdParty\DirectXTex\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj", "{371B9FA9-4C90-4AC6-A123-ACED756D6C77}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Debug|ARM64 = Debug|ARM64
-		Debug|x64 = Debug|x64
-		Profile|Any CPU = Profile|Any CPU
-		Profile|ARM64 = Profile|ARM64
-		Profile|x64 = Profile|x64
-		Release|Any CPU = Release|Any CPU
-		Release|ARM64 = Release|ARM64
-		Release|x64 = Release|x64
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Debug|ARM64.ActiveCfg = Debug|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Debug|ARM64.Build.0 = Debug|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Debug|x64.Build.0 = Debug|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Profile|Any CPU.ActiveCfg = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Profile|Any CPU.Build.0 = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Profile|ARM64.ActiveCfg = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Profile|ARM64.Build.0 = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Profile|x64.ActiveCfg = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Profile|x64.Build.0 = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Release|ARM64.ActiveCfg = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Release|ARM64.Build.0 = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Release|x64.ActiveCfg = Release|Any CPU
-		{EC549B85-B295-4639-8610-24B7A8F6BDB0}.Release|x64.Build.0 = Release|Any CPU
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Debug|ARM64.ActiveCfg = Debug|ARM64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Debug|ARM64.Build.0 = Debug|ARM64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Debug|x64.ActiveCfg = Debug|x64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Debug|x64.Build.0 = Debug|x64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Profile|Any CPU.ActiveCfg = Release|x64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Profile|Any CPU.Build.0 = Release|x64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Profile|ARM64.ActiveCfg = Debug|ARM64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Profile|ARM64.Build.0 = Debug|ARM64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Profile|x64.ActiveCfg = Release|x64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Profile|x64.Build.0 = Release|x64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Release|Any CPU.ActiveCfg = Release|x64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Release|ARM64.ActiveCfg = Release|ARM64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Release|ARM64.Build.0 = Release|ARM64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Release|x64.ActiveCfg = Release|x64
-		{1A202FA1-EE3E-4920-9BE5-2A567FE6C6EE}.Release|x64.Build.0 = Release|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Debug|Any CPU.Build.0 = Debug|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Debug|ARM64.ActiveCfg = Debug|ARM64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Debug|ARM64.Build.0 = Debug|ARM64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Debug|x64.ActiveCfg = Debug|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Debug|x64.Build.0 = Debug|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Profile|Any CPU.ActiveCfg = Profile|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Profile|Any CPU.Build.0 = Profile|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Profile|ARM64.ActiveCfg = Profile|ARM64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Profile|ARM64.Build.0 = Profile|ARM64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Profile|x64.ActiveCfg = Profile|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Profile|x64.Build.0 = Profile|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Release|Any CPU.ActiveCfg = Release|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Release|Any CPU.Build.0 = Release|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Release|ARM64.ActiveCfg = Release|ARM64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Release|ARM64.Build.0 = Release|ARM64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Release|x64.ActiveCfg = Release|x64
-		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Release|x64.Build.0 = Release|x64
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5064024F-BE06-4F68-AADF-DA9DE2872A9A}
-	EndGlobalSection
-EndGlobal
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net11.0-windows</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <PaintNetInstallDir Condition="'$(PaintNetInstallDir)' == ''">C:\Program Files\paint.net</PaintNetInstallDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="3rdParty\**" />
+    <Compile Remove="ARM64\**" />
+    <Compile Remove="DdsFileTypePlusIO\**" />
+    <Compile Remove="Debug\**" />
+    <Compile Remove="Release\**" />
+    <Compile Remove="x64\**" />
+    <EmbeddedResource Remove="3rdParty\**" />
+    <EmbeddedResource Remove="ARM64\**" />
+    <EmbeddedResource Remove="DdsFileTypePlusIO\**" />
+    <EmbeddedResource Remove="Debug\**" />
+    <EmbeddedResource Remove="Release\**" />
+    <EmbeddedResource Remove="x64\**" />
+    <None Remove="3rdParty\**" />
+    <None Remove="ARM64\**" />
+    <None Remove="DdsFileTypePlusIO\**" />
+    <None Remove="Debug\**" />
+    <None Remove="Release\**" />
+    <None Remove="x64\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PaintDotNet.Base">
+      <HintPath>$(PaintNetInstallDir)\PaintDotNet.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="PaintDotNet.ComponentModel">
+      <HintPath>$(PaintNetInstallDir)\PaintDotNet.ComponentModel.dll</HintPath>
+    </Reference>
+    <Reference Include="PaintDotNet.Core">
+      <HintPath>$(PaintNetInstallDir)\PaintDotNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PaintDotNet.Data">
+      <HintPath>$(PaintNetInstallDir)\PaintDotNet.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PaintDotNet.Fundamentals">
+      <HintPath>$(PaintNetInstallDir)\PaintDotNet.Fundamentals.dll</HintPath>
+    </Reference>
+    <Reference Include="PaintDotNet.Primitives">
+      <HintPath>$(PaintNetInstallDir)\PaintDotNet.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="PaintDotNet.PropertySystem">
+      <HintPath>$(PaintNetInstallDir)\PaintDotNet.PropertySystem.dll</HintPath>
+    </Reference>
+    <Reference Include="PaintDotNet.Windows">
+      <HintPath>$(PaintNetInstallDir)\PaintDotNet.Windows.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(PaintNetFileTypesDir)' != ''">
+    <Exec Command="if not exist &quot;$(PaintNetFileTypesDir)&quot; mkdir &quot;$(PaintNetFileTypesDir)&quot;&#xD;&#xA;copy /y &quot;$(TargetPath)&quot; &quot;$(PaintNetFileTypesDir)\&quot;" />
+  </Target>
+</Project>
