@@ -1,4 +1,4 @@
-﻿////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 //
 // MGSV / FOX Engine extension for DdsFileTypePlus.
 //
@@ -42,6 +42,42 @@ namespace DdsFileTypePlus
             Dx10Header = dx10Header;
             Format = format;
             FileOptions = fileOptions;
+        }
+
+        // Kept in the document's metadata too: Paint.NET can hand OnSave a different Document object than OnLoad returned.
+        internal string Serialize() =>
+            string.Join(",", Width, Height, MipLevels, CubeMap ? 1 : 0, Dx10Header ? 1 : 0, (int)Format, (int)FileOptions);
+
+        internal static bool TryDeserialize(string text, out DdsReferenceInfo info)
+        {
+            info = null;
+            string[] f = text?.Split(',');
+            if (f == null || f.Length != 7)
+            {
+                return false;
+            }
+            try
+            {
+                info = new DdsReferenceInfo(
+                    int.Parse(f[0]),
+                    int.Parse(f[1]),
+                    int.Parse(f[2]),
+                    f[3] == "1",
+                    f[4] == "1",
+                    (DdsFileFormat)int.Parse(f[5]),
+                    (DdsFileOptions)int.Parse(f[6]));
+                return info.Width > 0 && info.Height > 0 && info.MipLevels > 0;
+            }
+            catch (FormatException)
+            {
+                info = null;
+                return false;
+            }
+            catch (OverflowException)
+            {
+                info = null;
+                return false;
+            }
         }
 
         internal static bool TryRead(Stream input, out DdsReferenceInfo info)
@@ -409,7 +445,17 @@ namespace DdsFileTypePlus
 
             references.Remove(document);
             references.Add(document, info);
+            try
+            {
+                document.Metadata.SetUserValue(MetadataKey, info.Serialize());
+            }
+            catch (Exception)
+            {
+                // metadata is a fallback only
+            }
         }
+
+        private const string MetadataKey = "MGSV.DdsReference";
 
         internal static bool TryGet(Document document, out DdsReferenceInfo info)
         {
@@ -420,7 +466,19 @@ namespace DdsFileTypePlus
                 return false;
             }
 
-            return references.TryGetValue(document, out info);
+            if (references.TryGetValue(document, out info))
+            {
+                return true;
+            }
+            try
+            {
+                return DdsReferenceInfo.TryDeserialize(document.Metadata.GetUserValue(MetadataKey), out info);
+            }
+            catch (Exception)
+            {
+                info = null;
+                return false;
+            }
         }
     }
 }
