@@ -1,4 +1,4 @@
-﻿////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 //
 // This file is part of pdn-ddsfiletype-plus, a DDS FileType plugin
 // for Paint.NET that adds support for the DX10 and later formats.
@@ -30,7 +30,7 @@ namespace DdsFileTypePlus
         private readonly IDdsStringResourceManager strings;
 
         public DdsFileType(IServiceProvider services) :
-            base(GetFileTypeName(services.GetService<IDdsFileTypePlusStrings>()),
+            base(Properties.Resources.FileType_Name,
                  new FileTypeOptions()
                  {
                      LoadExtensions = FileExtensions,
@@ -38,21 +38,8 @@ namespace DdsFileTypePlus
                  })
         {
             this.services = services;
-            IDdsFileTypePlusStrings ddsFileTypePlusStrings = services.GetService<IDdsFileTypePlusStrings>();
-
-            if (ddsFileTypePlusStrings != null)
-            {
-                this.strings = new PdnLocalizedStringResourceManager(ddsFileTypePlusStrings);
-            }
-            else
-            {
-                this.strings = new BuiltinStringResourceManager();
-            }
-        }
-
-        private static string GetFileTypeName(IDdsFileTypePlusStrings strings)
-        {
-            return strings?.TryGetString(DdsFileTypePlusStringName.FileType_Name) ?? Properties.Resources.FileType_Name;
+            // Paint.NET 5.2 made its DDS string enum obsolete; the plugin's own resources hold the same text
+            this.strings = new BuiltinStringResourceManager();
         }
 
         public override PropertyCollection OnCreateSavePropertyCollection()
@@ -65,8 +52,8 @@ namespace DdsFileTypePlus
                 StaticListChoiceProperty.CreateForEnum(PropertyNames.BC7CompressionSpeed, BC7CompressionSpeed.Medium, false),
                 StaticListChoiceProperty.CreateForEnum(PropertyNames.ErrorMetric, DdsErrorMetric.Perceptual, false),
                 new BooleanProperty(PropertyNames.CubeMap, false),
-                new BooleanProperty(PropertyNames.GenerateMipMaps, false),
-                new BooleanProperty(PropertyNames.MgsvCompatibility, false),
+                new BooleanProperty(PropertyNames.GenerateMipMaps, true),
+                new BooleanProperty(PropertyNames.MgsvCompatibility, true),
                 CreateMipMapResamplingAlgorithm(),
                 new BooleanProperty(PropertyNames.UseGammaCorrection, true),
                 new StringProperty(PropertyNames.FoxEngineCredit),
