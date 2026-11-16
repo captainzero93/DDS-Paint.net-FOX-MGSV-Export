@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Stop"
 
 $RepoRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location -LiteralPath $RepoRoot
@@ -166,6 +166,11 @@ try {
     if ($sdkLines.Count -eq 0) {
         Fail "No .NET SDK is installed."
     }
+    # Paint.NET 5.2 runs on .NET 11, so the plugin targets net11.0-windows
+    if (-not ($sdkLines | Where-Object { $_ -match '^(\d+)\.' -and [int]$Matches[1] -ge 11 })) {
+        Fail "Paint.NET 5.2 needs a .NET 11 SDK to build plugins. Install it from https://dotnet.microsoft.com/download/dotnet/11.0"
+    }
+
     Write-Host ""
 
     # ------------------------------------------------------------
@@ -176,39 +181,40 @@ try {
         Fail "Solution not found: $Solution"
     }
 
-    Write-Section "Restoring"
+    # Native IO dll with Visual Studio's MSBuild; the managed plugin with the dotnet SDK.
+    # VS's MSBuild cannot run the .NET 10 SDK's tasks (Microsoft.Deployment.DotNet.Releases is not in its folder).
+    Write-Section "Building native DdsFileTypePlusIO / Release x64"
 
-    $restoreArgs = @(
-        $Solution,
-        "/t:Restore",
-        "/p:Configuration=Release",
-        "/p:Platform=x64",
-        "/p:PaintNetInstallDir=$Pdn",
-        "/verbosity:minimal",
-        "/nologo"
-    )
-
-    & $MsBuild @restoreArgs
+    # DirectXTex.lib first: the IO project links it but has no project reference to it
+    $DirectXTexProject = Join-Path $RepoRoot "3rdParty\DirectXTex\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj"
+    & $MsBuild $DirectXTexProject /m /t:Build /p:Configuration=Release /p:Platform=x64 /verbosity:minimal /nologo
     if ($LASTEXITCODE -ne 0) {
-        Fail "MSBuild restore failed with exit code $LASTEXITCODE."
+        Fail "MSBuild (DirectXTex) failed with exit code $LASTEXITCODE."
     }
 
-    Write-Section "Building Release / x64"
-
-    $buildArgs = @(
-        $Solution,
+    $NativeProject = Join-Path $RepoRoot "src\DdsFileTypePlusIO\DdsFileTypePlusIO.vcxproj"
+    $nativeArgs = @(
+        $NativeProject,
         "/m",
         "/t:Rebuild",
         "/p:Configuration=Release",
         "/p:Platform=x64",
-        "/p:PaintNetInstallDir=$Pdn",
+        "/p:SolutionDir=$(Join-Path $RepoRoot 'src')\",
         "/verbosity:minimal",
         "/nologo"
     )
 
-    & $MsBuild @buildArgs
+    & $MsBuild @nativeArgs
     if ($LASTEXITCODE -ne 0) {
-        Fail "MSBuild failed with exit code $LASTEXITCODE."
+        Fail "MSBuild (native) failed with exit code $LASTEXITCODE."
+    }
+
+    Write-Section "Building managed DdsFileTypePlus / Release"
+
+    $ManagedProject = Join-Path $RepoRoot "src\DdsFileTypePlus.csproj"
+    & dotnet build $ManagedProject -c Release "-p:PaintNetInstallDir=$Pdn" --nologo -v minimal
+    if ($LASTEXITCODE -ne 0) {
+        Fail "dotnet build (managed) failed with exit code $LASTEXITCODE."
     }
 
     # ------------------------------------------------------------
