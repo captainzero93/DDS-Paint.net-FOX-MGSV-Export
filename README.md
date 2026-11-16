@@ -1,5 +1,5 @@
 **What it is:**  
-A Paint.NET filetype plugin that lets you open and save DDS texture files (the ones DirectX 10+ games/engines use). It’s already bundled with Paint.NET 4.2.2+, so if you’re on a newer version, it’s probably already there. If not, just drop the DLLs into the right folder and restart.
+A Paint.NET filetype plugin that lets you open and save DDS texture files (the ones DirectX 10+ games/engines use). It’s already bundled with Paint.NET 4.2.2+, so if you’re on a newer version, it’s probably already there however this version adds specific support for MGSV. Just drop the DLLs into the right folder and restart.
 
 **How it handles DDS files:**  
 - Only supports **single images + cube maps**. Texture arrays and volume textures are ignored.
